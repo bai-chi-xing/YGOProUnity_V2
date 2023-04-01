@@ -155,196 +155,196 @@ namespace TMPro.EditorUtilities
 
 
             // Draw & process FreeMoveHandles
-            float handleSize = HandleUtility.GetHandleSize(rectPos) * 0.2f;
-            Handles.color = new Color(0, .4f, 1f, 1f);         
-            bool hasChanged = false;
-            bool isShiftKey = evt.shift;
+            //float handleSize = HandleUtility.GetHandleSize(rectPos) * 0.2f;
+            //Handles.color = new Color(0, .4f, 1f, 1f);         
+            //bool hasChanged = false;
+            //bool isShiftKey = evt.shift;
             
 
-            // BOTTOM LEFT HANDLE
-            Vector3 old_BottomLeft = m_Rect_handlePoints[0];
-            Vector3 new_BottomLeft = Handles.FreeMoveHandle(old_BottomLeft, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);        
-            if (old_BottomLeft != new_BottomLeft)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_BottomLeft - new_BottomLeft;
-                rectangle.width += delta.x / lossyScale.x;
-                rectangle.height += delta.y / lossyScale.y;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * (1 - pivot.x), -delta.y * (1 - pivot.y), 0));
+            //// BOTTOM LEFT HANDLE
+            //Vector3 old_BottomLeft = m_Rect_handlePoints[0];
+            //Vector3 new_BottomLeft = Handles.FreeMoveHandle(old_BottomLeft, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);        
+            //if (old_BottomLeft != new_BottomLeft)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_BottomLeft - new_BottomLeft;
+            //    rectangle.width += delta.x / lossyScale.x;
+            //    rectangle.height += delta.y / lossyScale.y;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * (1 - pivot.x), -delta.y * (1 - pivot.y), 0));
                                
-                hasChanged = true;              
-            }
+            //    hasChanged = true;              
+            //}
 
-            // LEFT HANDLE            
-            Vector3 old_Left = (m_Rect_handlePoints[0] + m_Rect_handlePoints[1]) / 2;          
-            Vector3 new_Left = Handles.FreeMoveHandle(old_Left, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_Left != new_Left)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector3 delta = old_Left - new_Left;
-                rectangle.width += delta.x / lossyScale.x;    
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * (1 - pivot.x), 0, 0));
+            //// LEFT HANDLE            
+            //Vector3 old_Left = (m_Rect_handlePoints[0] + m_Rect_handlePoints[1]) / 2;          
+            //Vector3 new_Left = Handles.FreeMoveHandle(old_Left, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_Left != new_Left)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector3 delta = old_Left - new_Left;
+            //    rectangle.width += delta.x / lossyScale.x;    
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * (1 - pivot.x), 0, 0));
                 
-                hasChanged = true;               
-            }
+            //    hasChanged = true;               
+            //}
          
-            // TOP LEFT HANDLE
-            Vector3 old_TopLeft = m_Rect_handlePoints[1];
-            Vector3 new_TopLeft = Handles.FreeMoveHandle(old_TopLeft, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_TopLeft != new_TopLeft)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_TopLeft - new_TopLeft;
-                rectangle.width += delta.x / lossyScale.x;
-                rectangle.height -= delta.y / lossyScale.y;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * (1 - pivot.x), -delta.y * (pivot.y), 0));
+            //// TOP LEFT HANDLE
+            //Vector3 old_TopLeft = m_Rect_handlePoints[1];
+            //Vector3 new_TopLeft = Handles.FreeMoveHandle(old_TopLeft, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_TopLeft != new_TopLeft)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_TopLeft - new_TopLeft;
+            //    rectangle.width += delta.x / lossyScale.x;
+            //    rectangle.height -= delta.y / lossyScale.y;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * (1 - pivot.x), -delta.y * (pivot.y), 0));
                
-                hasChanged = true;
-            }
+            //    hasChanged = true;
+            //}
 
-            // TOP HANDLE            
-            Vector3 old_Top = (m_Rect_handlePoints[1] + m_Rect_handlePoints[2]) / 2;
-            Vector3 new_Top = Handles.FreeMoveHandle(old_Top, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_Top != new_Top)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_Top - new_Top;
-                rectangle.height -= delta.y / lossyScale.y;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(0, -delta.y * (pivot.y), 0));
+            //// TOP HANDLE            
+            //Vector3 old_Top = (m_Rect_handlePoints[1] + m_Rect_handlePoints[2]) / 2;
+            //Vector3 new_Top = Handles.FreeMoveHandle(old_Top, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_Top != new_Top)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_Top - new_Top;
+            //    rectangle.height -= delta.y / lossyScale.y;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(0, -delta.y * (pivot.y), 0));
                 
-                hasChanged = true;
-            }
+            //    hasChanged = true;
+            //}
 
-            // TOP RIGHT HANDLE
-            Vector3 old_TopRight = m_Rect_handlePoints[2];
-            Vector3 new_TopRight = Handles.FreeMoveHandle(old_TopRight, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_TopRight != new_TopRight)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_TopRight - new_TopRight;
-                rectangle.width -= delta.x / lossyScale.x;
-                rectangle.height -= delta.y / lossyScale.y;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * pivot.x, -delta.y * (pivot.y), 0));
+            //// TOP RIGHT HANDLE
+            //Vector3 old_TopRight = m_Rect_handlePoints[2];
+            //Vector3 new_TopRight = Handles.FreeMoveHandle(old_TopRight, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_TopRight != new_TopRight)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_TopRight - new_TopRight;
+            //    rectangle.width -= delta.x / lossyScale.x;
+            //    rectangle.height -= delta.y / lossyScale.y;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * pivot.x, -delta.y * (pivot.y), 0));
                     
-                hasChanged = true;
-            }
+            //    hasChanged = true;
+            //}
 
-            // RIGHT HANDLE            
-            Vector3 old_Right = (m_Rect_handlePoints[2] + m_Rect_handlePoints[3]) / 2;
-            Vector3 new_Right = Handles.FreeMoveHandle(old_Right, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_Right != new_Right)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_Right - new_Right;
-                rectangle.width -= delta.x / lossyScale.x;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * pivot.x, 0, 0));
+            //// RIGHT HANDLE            
+            //Vector3 old_Right = (m_Rect_handlePoints[2] + m_Rect_handlePoints[3]) / 2;
+            //Vector3 new_Right = Handles.FreeMoveHandle(old_Right, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_Right != new_Right)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_Right - new_Right;
+            //    rectangle.width -= delta.x / lossyScale.x;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * pivot.x, 0, 0));
                
-                hasChanged = true;
-            }
+            //    hasChanged = true;
+            //}
 
-            // BOTTOM RIGHT HANDLE
-            Vector3 old_BottomRight = m_Rect_handlePoints[3];
-            Vector3 new_BottomRight = Handles.FreeMoveHandle(old_BottomRight, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_BottomRight != new_BottomRight)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_BottomRight - new_BottomRight;
-                rectangle.width -= delta.x / lossyScale.x;
-                rectangle.height += delta.y / lossyScale.y;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * pivot.x, -delta.y * (1 - pivot.y), 0));
+            //// BOTTOM RIGHT HANDLE
+            //Vector3 old_BottomRight = m_Rect_handlePoints[3];
+            //Vector3 new_BottomRight = Handles.FreeMoveHandle(old_BottomRight, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_BottomRight != new_BottomRight)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_BottomRight - new_BottomRight;
+            //    rectangle.width -= delta.x / lossyScale.x;
+            //    rectangle.height += delta.y / lossyScale.y;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(-delta.x * pivot.x, -delta.y * (1 - pivot.y), 0));
                            
-                hasChanged = true;             
-            }
+            //    hasChanged = true;             
+            //}
 
-            // BOTTOM HANDLE            
-            Vector3 old_Bottom = (m_Rect_handlePoints[0] + m_Rect_handlePoints[3]) / 2;
-            Vector3 new_Bottom = Handles.FreeMoveHandle(old_Bottom, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
-            if (old_Bottom != new_Bottom)
-            {
-                Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
-                Vector2 delta = old_Bottom - new_Bottom;
-                rectangle.height += delta.y / lossyScale.y;
-                if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(0, -delta.y * (1 - pivot.y), 0));
+            //// BOTTOM HANDLE            
+            //Vector3 old_Bottom = (m_Rect_handlePoints[0] + m_Rect_handlePoints[3]) / 2;
+            //Vector3 new_Bottom = Handles.FreeMoveHandle(old_Bottom, Quaternion.identity, handleSize, Vector3.zero, Handles.SphereCap);
+            //if (old_Bottom != new_Bottom)
+            //{
+            //    Undo.RecordObjects(new Object[] { m_textContainer, m_transform }, "Rectangle Dimension Changes");
+            //    Vector2 delta = old_Bottom - new_Bottom;
+            //    rectangle.height += delta.y / lossyScale.y;
+            //    if (!isShiftKey) m_transform.position += m_transform.TransformDirection(new Vector3(0, -delta.y * (1 - pivot.y), 0));
                 
-                hasChanged = true;
-            }
+            //    hasChanged = true;
+            //}
 
                            
-            //if (evt.type == EventType.mouseUp)
-            //    m_mouseDragFlag = 0;
+            ////if (evt.type == EventType.mouseUp)
+            ////    m_mouseDragFlag = 0;
 
            
-            // Margin Frame & Handles               
-            Vector4 textMargins = m_textContainer.margins;
+            //// Margin Frame & Handles               
+            //Vector4 textMargins = m_textContainer.margins;
 
-            m_Margin_handlePoints[0] = new_BottomLeft + m_transform.TransformDirection(new Vector3(textMargins.x * lossyScale.x, textMargins.w * lossyScale.y, 0)); // BL
-            m_Margin_handlePoints[1] = new_TopLeft + m_transform.TransformDirection(new Vector3(textMargins.x * lossyScale.x, - textMargins.y * lossyScale.y, 0)); // TL
-            m_Margin_handlePoints[2] = new_TopRight + m_transform.TransformDirection(new Vector3(- textMargins.z * lossyScale.x, - textMargins.y * lossyScale.y, 0)); // TR
-            m_Margin_handlePoints[3] = new_BottomRight + m_transform.TransformDirection(new Vector3(- textMargins.z * lossyScale.x,  textMargins.w * lossyScale.y, 0));   // BR
+            //m_Margin_handlePoints[0] = new_BottomLeft + m_transform.TransformDirection(new Vector3(textMargins.x * lossyScale.x, textMargins.w * lossyScale.y, 0)); // BL
+            //m_Margin_handlePoints[1] = new_TopLeft + m_transform.TransformDirection(new Vector3(textMargins.x * lossyScale.x, - textMargins.y * lossyScale.y, 0)); // TL
+            //m_Margin_handlePoints[2] = new_TopRight + m_transform.TransformDirection(new Vector3(- textMargins.z * lossyScale.x, - textMargins.y * lossyScale.y, 0)); // TR
+            //m_Margin_handlePoints[3] = new_BottomRight + m_transform.TransformDirection(new Vector3(- textMargins.z * lossyScale.x,  textMargins.w * lossyScale.y, 0));   // BR
 
-            Handles.color = Color.yellow;
-            Handles.DrawSolidRectangleWithOutline(m_Margin_handlePoints, new Color32(255, 255, 255, 0), new Color32(255, 255, 0, 255));
+            //Handles.color = Color.yellow;
+            //Handles.DrawSolidRectangleWithOutline(m_Margin_handlePoints, new Color32(255, 255, 255, 0), new Color32(255, 255, 0, 255));
 
-            // Draw & process FreeMoveHandles
-            handleSize = HandleUtility.GetHandleSize(rectPos) * 0.05f;
-            Handles.color = Color.yellow;
+            //// Draw & process FreeMoveHandles
+            //handleSize = HandleUtility.GetHandleSize(rectPos) * 0.05f;
+            //Handles.color = Color.yellow;
 
-            // LEFT HANDLE
-            Vector3 old_left = (m_Margin_handlePoints[0] + m_Margin_handlePoints[1]) * 0.5f;
-            Vector3 new_left = Handles.FreeMoveHandle(old_left, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);            
-            if (old_left != new_left)
-            {
-                Undo.RecordObject(target, "Margin Changes");
-                float delta = old_left.x - new_left.x;                               
-                textMargins.x -= delta / lossyScale.x;              
-                //Debug.Log("Left Margin H0:" + handlePoints[0] + "  H1:" + handlePoints[1]);
-                hasChanged = true;
-            }
+            //// LEFT HANDLE
+            //Vector3 old_left = (m_Margin_handlePoints[0] + m_Margin_handlePoints[1]) * 0.5f;
+            //Vector3 new_left = Handles.FreeMoveHandle(old_left, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);            
+            //if (old_left != new_left)
+            //{
+            //    Undo.RecordObject(target, "Margin Changes");
+            //    float delta = old_left.x - new_left.x;                               
+            //    textMargins.x -= delta / lossyScale.x;              
+            //    //Debug.Log("Left Margin H0:" + handlePoints[0] + "  H1:" + handlePoints[1]);
+            //    hasChanged = true;
+            //}
 
-            // TOP HANDLE
-            Vector3 old_top = (m_Margin_handlePoints[1] + m_Margin_handlePoints[2]) * 0.5f;
-            Vector3 new_top = Handles.FreeMoveHandle(old_top, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);
-            if (old_top != new_top)
-            {
-                Undo.RecordObject(target, "Margin Changes");
-                float delta = old_top.y - new_top.y;             
-                textMargins.y += delta / lossyScale.y;
-                //Debug.Log("Top Margin H1:" + handlePoints[1] + "  H2:" + handlePoints[2]);   
-                hasChanged = true;
-            }
+            //// TOP HANDLE
+            //Vector3 old_top = (m_Margin_handlePoints[1] + m_Margin_handlePoints[2]) * 0.5f;
+            //Vector3 new_top = Handles.FreeMoveHandle(old_top, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);
+            //if (old_top != new_top)
+            //{
+            //    Undo.RecordObject(target, "Margin Changes");
+            //    float delta = old_top.y - new_top.y;             
+            //    textMargins.y += delta / lossyScale.y;
+            //    //Debug.Log("Top Margin H1:" + handlePoints[1] + "  H2:" + handlePoints[2]);   
+            //    hasChanged = true;
+            //}
 
-            // RIGHT HANDLE
-            Vector3 old_right = (m_Margin_handlePoints[2] + m_Margin_handlePoints[3]) * 0.5f;
-            Vector3 new_right = Handles.FreeMoveHandle(old_right, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);
-            if (old_right != new_right)
-            {
-                Undo.RecordObject(target, "Margin Changes");
-                float delta = old_right.x - new_right.x;
-                textMargins.z += delta / lossyScale.x;               
-                hasChanged = true;
-                //Debug.Log("Right Margin H2:" + handlePoints[2] + "  H3:" + handlePoints[3]);
-            }
+            //// RIGHT HANDLE
+            //Vector3 old_right = (m_Margin_handlePoints[2] + m_Margin_handlePoints[3]) * 0.5f;
+            //Vector3 new_right = Handles.FreeMoveHandle(old_right, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);
+            //if (old_right != new_right)
+            //{
+            //    Undo.RecordObject(target, "Margin Changes");
+            //    float delta = old_right.x - new_right.x;
+            //    textMargins.z += delta / lossyScale.x;               
+            //    hasChanged = true;
+            //    //Debug.Log("Right Margin H2:" + handlePoints[2] + "  H3:" + handlePoints[3]);
+            //}
 
-            // BOTTOM HANDLE
-            Vector3 old_bottom = (m_Margin_handlePoints[3] + m_Margin_handlePoints[0]) * 0.5f;
-            Vector3 new_bottom = Handles.FreeMoveHandle(old_bottom, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);
-            if (old_bottom != new_bottom)
-            {
-                Undo.RecordObject(target, "Margin Changes");
-                float delta = old_bottom.y - new_bottom.y;
-                textMargins.w -= delta / lossyScale.y;              
-                hasChanged = true;
-                //Debug.Log("Bottom Margin H0:" + handlePoints[0] + "  H3:" + handlePoints[3]);
-            }
+            //// BOTTOM HANDLE
+            //Vector3 old_bottom = (m_Margin_handlePoints[3] + m_Margin_handlePoints[0]) * 0.5f;
+            //Vector3 new_bottom = Handles.FreeMoveHandle(old_bottom, Quaternion.identity, handleSize, Vector3.zero, Handles.DotCap);
+            //if (old_bottom != new_bottom)
+            //{
+            //    Undo.RecordObject(target, "Margin Changes");
+            //    float delta = old_bottom.y - new_bottom.y;
+            //    textMargins.w -= delta / lossyScale.y;              
+            //    hasChanged = true;
+            //    //Debug.Log("Bottom Margin H0:" + handlePoints[0] + "  H3:" + handlePoints[3]);
+            //}
 
-            if (hasChanged)
-            {               
-                hasChanged = false;
-                m_textContainer.rect = rectangle;
-                m_textContainer.margins = textMargins;             
-                m_textContainer.hasChanged = true;
-                EditorUtility.SetDirty(m_transform);
-            }
+            //if (hasChanged)
+            //{               
+            //    hasChanged = false;
+            //    m_textContainer.rect = rectangle;
+            //    m_textContainer.margins = textMargins;             
+            //    m_textContainer.hasChanged = true;
+            //    EditorUtility.SetDirty(m_transform);
+            //}
                        
         }
 

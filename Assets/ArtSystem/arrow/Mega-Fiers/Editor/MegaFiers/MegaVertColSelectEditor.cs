@@ -40,30 +40,30 @@ public class MegaVertColSelectEditor : MegaModifierEditor
 
 		float[] sel = mod.GetSel();
 
-		if ( mc != null && sel != null )
-		{
-			Color col = Color.black;
+		//if ( mc != null && sel != null )
+		//{
+		//	Color col = Color.black;
 
-			Matrix4x4 tm = mod.gameObject.transform.localToWorldMatrix;
-			Handles.matrix = Matrix4x4.identity;
+		//	Matrix4x4 tm = mod.gameObject.transform.localToWorldMatrix;
+		//	Handles.matrix = Matrix4x4.identity;
 
-			if ( mod.displayWeights )
-			{
-				for ( int i = 0; i < sel.Length; i++ )
-				{
-					float w = sel[i];
-					if ( w > 0.5f )
-						col = Color.Lerp(Color.green, Color.red, (w - 0.5f) * 2.0f);
-					else
-						col = Color.Lerp(Color.blue, Color.green, w * 2.0f);
-					Handles.color = col;
+		//	if ( mod.displayWeights )
+		//	{
+		//		for ( int i = 0; i < sel.Length; i++ )
+		//		{
+		//			float w = sel[i];
+		//			if ( w > 0.5f )
+		//				col = Color.Lerp(Color.green, Color.red, (w - 0.5f) * 2.0f);
+		//			else
+		//				col = Color.Lerp(Color.blue, Color.green, w * 2.0f);
+		//			Handles.color = col;
 
-					Vector3 p = tm.MultiplyPoint(mc.sverts[i]);
+		//			Vector3 p = tm.MultiplyPoint(mc.sverts[i]);
 
-					if ( w > 0.001f )
-						Handles.DotCap(i, p, Quaternion.identity, mod.gizSize);
-				}
-			}
-		}
+		//			if ( w > 0.001f )
+		//				Handles.DotCap(i, p, Quaternion.identity, mod.gizSize);
+		//		}
+		//	}
+		//}
 	}
 }

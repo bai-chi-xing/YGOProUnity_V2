@@ -1,7 +1,6 @@
 ﻿
 using UnityEngine;
 
-
 public class MGBlendTable
 {
 	int mTableSzX, mTableSzY;
@@ -9,7 +8,7 @@ public class MGBlendTable
 	int mTableSzXY;		// layer sz
 	int mTotalSz;			// all layers
 	float[] mpTable;	// the dither tables
-	Random mRandom;		// maxsdk pseudo-random number generator
+	//Random mRandom;		// maxsdk pseudo-random number generator
 
 	int LayerIndex(int nImage)
 	{
@@ -83,7 +82,9 @@ public class MGBlendTable
 
 	float RandomNoise()
 	{
-		return Random.value;
+		//hack:这里补随机数
+		//return Random.value;
+		return 0.2f;
 	}
 
 	public MGBlendTable(int tableX, int tableY, int nToBlend, float ditherAmt, bool normalizeTable)

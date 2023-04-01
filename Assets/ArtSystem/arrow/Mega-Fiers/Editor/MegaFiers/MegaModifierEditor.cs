@@ -183,62 +183,62 @@ public class MegaModifierEditor : Editor
 
 	public virtual void DrawSceneGUI()
 	{
-		MegaModifier mod = (MegaModifier)target;
+		//MegaModifier mod = (MegaModifier)target;
 
-		if ( mod.ModEnabled && mod.DisplayGizmo && MegaModifiers.GlobalDisplay && showmodparams )
-		{
-			MegaModifiers context = mod.GetComponent<MegaModifiers>();
+		//if ( mod.ModEnabled && mod.DisplayGizmo && MegaModifiers.GlobalDisplay && showmodparams )
+		//{
+		//	MegaModifiers context = mod.GetComponent<MegaModifiers>();
 
-			if ( context != null && context.Enabled && context.DrawGizmos )
-			{
-				//mod.Offset = -Handles.PositionHandle(-mod.Offset, Quaternion.identity);
-				float a = mod.gizCol1.a;
-				Color col = Color.white;
+		//	if ( context != null && context.Enabled && context.DrawGizmos )
+		//	{
+		//		//mod.Offset = -Handles.PositionHandle(-mod.Offset, Quaternion.identity);
+		//		float a = mod.gizCol1.a;
+		//		Color col = Color.white;
 
-				Quaternion rot = mod.transform.localRotation;
+		//		Quaternion rot = mod.transform.localRotation;
 
-				Handles.matrix = Matrix4x4.identity;
+		//		Handles.matrix = Matrix4x4.identity;
 
-				if ( mod.Offset != Vector3.zero )
-				{
-					Vector3 pos = mod.transform.localToWorldMatrix.MultiplyPoint(-mod.Offset);
-					Handles.Label(pos, mod.ModName() + " Offset\n" + mod.Offset.ToString("0.000"));
-					col = Color.blue;
-					col.a = a;
-					Handles.color = col;
-					Handles.ArrowCap(0, pos, rot * Quaternion.Euler(180.0f, 0.0f, 0.0f), mod.GizmoSize());
-					col = Color.green;
-					col.a = a;
-					Handles.color = col;
-					Handles.ArrowCap(0, pos, rot * Quaternion.Euler(90.0f, 0.0f, 0.0f), mod.GizmoSize());
-					col = Color.red;
-					col.a = a;
-					Handles.color = col;
-					Handles.ArrowCap(0, pos, rot * Quaternion.Euler(0.0f, -90.0f, 0.0f), mod.GizmoSize());
-				}
+		//		if ( mod.Offset != Vector3.zero )
+		//		{
+		//			Vector3 pos = mod.transform.localToWorldMatrix.MultiplyPoint(-mod.Offset);
+		//			Handles.Label(pos, mod.ModName() + " Offset\n" + mod.Offset.ToString("0.000"));
+		//			col = Color.blue;
+		//			col.a = a;
+		//			Handles.color = col;
+		//			Handles.ArrowCap(0, pos, rot * Quaternion.Euler(180.0f, 0.0f, 0.0f), mod.GizmoSize());
+		//			col = Color.green;
+		//			col.a = a;
+		//			Handles.color = col;
+		//			Handles.ArrowCap(0, pos, rot * Quaternion.Euler(90.0f, 0.0f, 0.0f), mod.GizmoSize());
+		//			col = Color.red;
+		//			col.a = a;
+		//			Handles.color = col;
+		//			Handles.ArrowCap(0, pos, rot * Quaternion.Euler(0.0f, -90.0f, 0.0f), mod.GizmoSize());
+		//		}
 
-				// gizmopos
-				if ( mod.gizmoPos != Vector3.zero )
-				{
-					Vector3 pos = mod.transform.localToWorldMatrix.MultiplyPoint(-mod.gizmoPos);
-					Handles.Label(pos, mod.ModName() + " Pos\n" + mod.gizmoPos.ToString("0.000"));
-					col = Color.blue;
-					col.a = a;
-					Handles.color = col;
-					Handles.ArrowCap(0, pos, rot * Quaternion.Euler(180.0f, 0.0f, 0.0f), mod.GizmoSize());
-					col = Color.green;
-					col.a = a;
-					Handles.color = col;
-					Handles.ArrowCap(0, pos, rot * Quaternion.Euler(90.0f, 0.0f, 0.0f), mod.GizmoSize());
-					col = Color.red;
-					col.a = a;
-					Handles.color = col;
-					Handles.ArrowCap(0, pos, rot * Quaternion.Euler(0.0f, -90.0f, 0.0f), mod.GizmoSize());
-				}
+		//		// gizmopos
+		//		if ( mod.gizmoPos != Vector3.zero )
+		//		{
+		//			Vector3 pos = mod.transform.localToWorldMatrix.MultiplyPoint(-mod.gizmoPos);
+		//			Handles.Label(pos, mod.ModName() + " Pos\n" + mod.gizmoPos.ToString("0.000"));
+		//			col = Color.blue;
+		//			col.a = a;
+		//			Handles.color = col;
+		//			Handles.ArrowCap(0, pos, rot * Quaternion.Euler(180.0f, 0.0f, 0.0f), mod.GizmoSize());
+		//			col = Color.green;
+		//			col.a = a;
+		//			Handles.color = col;
+		//			Handles.ArrowCap(0, pos, rot * Quaternion.Euler(90.0f, 0.0f, 0.0f), mod.GizmoSize());
+		//			col = Color.red;
+		//			col.a = a;
+		//			Handles.color = col;
+		//			Handles.ArrowCap(0, pos, rot * Quaternion.Euler(0.0f, -90.0f, 0.0f), mod.GizmoSize());
+		//		}
 
-				Handles.matrix = Matrix4x4.identity;
-			}
-		}
+		//		Handles.matrix = Matrix4x4.identity;
+		//	}
+		//}
 	}
 
 	public override void OnInspectorGUI()

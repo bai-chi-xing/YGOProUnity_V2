@@ -97,29 +97,29 @@ public class MegaRubberEditor : MegaModifierEditor
 #else
 	public override void DrawSceneGUI()
 	{
-		MegaRubber mod = (MegaRubber)target;
-		if ( mod.showweights && mod.vr != null )
-		{
-			Color col = Color.black;
+		//MegaRubber mod = (MegaRubber)target;
+		//if ( mod.showweights && mod.vr != null )
+		//{
+		//	Color col = Color.black;
 
-			Matrix4x4 tm = mod.gameObject.transform.localToWorldMatrix;
-			Handles.matrix = Matrix4x4.identity;
+		//	Matrix4x4 tm = mod.gameObject.transform.localToWorldMatrix;
+		//	Handles.matrix = Matrix4x4.identity;
 
-			for ( int i = 0; i < mod.vr.Length; i++ )
-			{
-				float w = mod.vr[i].weight;
-				if ( w > 0.5f )
-					col = Color.Lerp(Color.green, Color.red, (w - 0.5f) * 2.0f);
-				else
-					col = Color.Lerp(Color.blue, Color.green, w * 2.0f);
-				Handles.color = col;
+		//	for ( int i = 0; i < mod.vr.Length; i++ )
+		//	{
+		//		float w = mod.vr[i].weight;
+		//		if ( w > 0.5f )
+		//			col = Color.Lerp(Color.green, Color.red, (w - 0.5f) * 2.0f);
+		//		else
+		//			col = Color.Lerp(Color.blue, Color.green, w * 2.0f);
+		//		Handles.color = col;
 
-				Vector3 p = tm.MultiplyPoint(mod.vr[i].cpos);
-				Handles.DotCap(i, p, Quaternion.identity, mod.size);
-			}
+		//		Vector3 p = tm.MultiplyPoint(mod.vr[i].cpos);
+		//		Handles.DotCap(i, p, Quaternion.identity, mod.size);
+		//	}
 
-			Handles.matrix = Matrix4x4.identity;
-		}
+		//	Handles.matrix = Matrix4x4.identity;
+		//}
 	}
 #endif
 }

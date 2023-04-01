@@ -417,195 +417,195 @@ public class MegaShapeEditor : Editor
 		}
 		//Debug.Log("Dragplane " + dragplane);
 
-		Color nocol = new Color(0, 0, 0, 0);
-		for ( int s = 0; s < shape.splines.Count; s++ )
-		{
-			for ( int p = 0; p < shape.splines[s].knots.Count; p++ )
-			{
-				Vector3 pp = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
+//		Color nocol = new Color(0, 0, 0, 0);
+//		for ( int s = 0; s < shape.splines.Count; s++ )
+//		{
+//			for ( int p = 0; p < shape.splines[s].knots.Count; p++ )
+//			{
+//				Vector3 pp = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
 
-				Vector3 normal = Camera.current.transform.forward;
-				if ( shape.drawKnots )	//&& recalc == false )
-				{
-					pm = shape.splines[s].knots[p].p;
+//				Vector3 normal = Camera.current.transform.forward;
+//				if ( shape.drawKnots )	//&& recalc == false )
+//				{
+//					pm = shape.splines[s].knots[p].p;
 
-					Handles.color = Color.black;
-					Handles.color = shape.VecCol;
+//					Handles.color = Color.black;
+//					Handles.color = shape.VecCol;
 
-					//Vector3 normal = (pp - Camera.current.transform.position).normalized;
-					Handles.DrawSolidDisc(pp, normal, knotsize * borderratio);	//ksize * 0.55f);
+//					//Vector3 normal = (pp - Camera.current.transform.position).normalized;
+//					Handles.DrawSolidDisc(pp, normal, knotsize * borderratio);	//ksize * 0.55f);
 
-					if ( p == selected )
-					{
-						Handles.color = Color.white;
-						Handles.Label(pm, " Selected\n" + pm.ToString("0.000"));
-					}
-					else
-					{
-						Handles.color = shape.KnotCol;
-						Handles.Label(pm, " " + p);
-					}
+//					if ( p == selected )
+//					{
+//						Handles.color = Color.white;
+//						Handles.Label(pm, " Selected\n" + pm.ToString("0.000"));
+//					}
+//					else
+//					{
+//						Handles.color = shape.KnotCol;
+//						Handles.Label(pm, " " + p);
+//					}
 
-					//if ( p == selected )
-					//shape.splines[s].knots[p].p = Handles.PositionHandle(pm, Quaternion.identity);
-					//else
-					//{
+//					//if ( p == selected )
+//					//shape.splines[s].knots[p].p = Handles.PositionHandle(pm, Quaternion.identity);
+//					//else
+//					//{
 
-					Handles.color = shape.KnotCol;
-					Handles.DrawSolidDisc(pp, normal, knotsize);
+//					Handles.color = shape.KnotCol;
+//					Handles.DrawSolidDisc(pp, normal, knotsize);
 
-					//shape.splines[s].knots[p].p = Handles.FreeMoveHandle(pm, Quaternion.identity, ksize, Vector3.zero, Handles.SphereCap);	//CubeCap);
-					Handles.color = nocol;	//shape.VecCol;
-					Vector3 newp = Handles.FreeMoveHandle(pm, Quaternion.identity, knotsize * ringratio, Vector3.zero, Handles.CircleCap);	//SphereCap);	//CubeCap);
-					shape.splines[s].knots[p].p += Vector3.Scale(newp - pm, dragplane);
-
-
-					//if ( shape.splines[s].knots[p].p != pm )
-					//selected = p;
-					//}
-
-					delta = shape.splines[s].knots[p].p - pm;
-
-					shape.splines[s].knots[p].invec += delta;
-					shape.splines[s].knots[p].outvec += delta;
-
-					if ( shape.splines[s].knots[p].p != pm )
-					{
-						selected = p;
-						recalc = true;
-					}
-
-					pm = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
-
-					//Handles.CubeCap(0, pm, Quaternion.identity, shape.KnotSize);
-				}
-
-				if ( shape.drawHandles )	//&& recalc == false )
-				{
-					Handles.color = shape.VecCol;
-					pm = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
-
-					Vector3 ip = shape.transform.TransformPoint(shape.splines[s].knots[p].invec);
-					Vector3 op = shape.transform.TransformPoint(shape.splines[s].knots[p].outvec);
-					Handles.DrawLine(pm, shape.transform.TransformPoint(shape.splines[s].knots[p].invec));
-					Handles.DrawLine(pm, shape.transform.TransformPoint(shape.splines[s].knots[p].outvec));
+//					//shape.splines[s].knots[p].p = Handles.FreeMoveHandle(pm, Quaternion.identity, ksize, Vector3.zero, Handles.SphereCap);	//CubeCap);
+//					Handles.color = nocol;	//shape.VecCol;
+//					Vector3 newp = Handles.FreeMoveHandle(pm, Quaternion.identity, knotsize * ringratio, Vector3.zero, Handles.CircleCap);	//SphereCap);	//CubeCap);
+//					shape.splines[s].knots[p].p += Vector3.Scale(newp - pm, dragplane);
 
 
-					//Handles.color = Color.black;
-					//Vector3 normal = (op - Camera.current.transform.position).normalized;
-					Handles.DrawSolidDisc(op, normal, handlesize * borderratio);	//ksize * 0.55f * ringratio);
-					//normal = Camera.current.transform.forward;	//(ip - Camera.current.transform.position).normalized;
-					Handles.DrawSolidDisc(ip, normal, handlesize * borderratio);	//ksize * 0.55f * ringratio);
+//					//if ( shape.splines[s].knots[p].p != pm )
+//					//selected = p;
+//					//}
 
-					Handles.color = shape.HandleCol;
+//					delta = shape.splines[s].knots[p].p - pm;
 
-					//Handles.DrawSolidDisc(op, normal, ksize * 0.5f * ringratio);
-					//Handles.DrawSolidDisc(ip, normal, ksize * 0.5f * ringratio);
-					Handles.DrawSolidDisc(op, normal, handlesize);
-					Handles.DrawSolidDisc(ip, normal, handlesize);
+//					shape.splines[s].knots[p].invec += delta;
+//					shape.splines[s].knots[p].outvec += delta;
 
-					//shape.splines[s].knots[p].invec = Handles.PositionHandle(shape.splines[s].knots[p].invec, Quaternion.identity);	//shape.hsize);
-					//shape.splines[s].knots[p].outvec = Handles.PositionHandle(shape.splines[s].knots[p].outvec, Quaternion.identity);	//shape.hsize);
+//					if ( shape.splines[s].knots[p].p != pm )
+//					{
+//						selected = p;
+//						recalc = true;
+//					}
 
-					Vector3 invec = shape.splines[s].knots[p].invec;
-					//if ( p == selected )
-						//invec = Handles.PositionHandle(shape.splines[s].knots[p].invec, Quaternion.identity);	//shape.hsize);
-					//else
-					Handles.color = nocol;
-					Vector3 newinvec = Handles.FreeMoveHandle(shape.splines[s].knots[p].invec, Quaternion.identity, handlesize * ringratio, Vector3.zero, Handles.CircleCap);	//SphereCap);	//CubeCap);
+//					pm = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
 
-					invec += Vector3.Scale(newinvec - invec, dragplane);
-					//Debug.Log("sel " + selected + " new " + invec.ToString("0.0000") + " old " + shape.splines[s].knots[p].invec.ToString("0.0000"));
-					if ( invec != shape.splines[s].knots[p].invec )
-					{
-						if ( shape.lockhandles )
-						{
-							Vector3 d = invec - shape.splines[s].knots[p].invec;
-							shape.splines[s].knots[p].outvec -= d;
-						}
+//					//Handles.CubeCap(0, pm, Quaternion.identity, shape.KnotSize);
+//				}
 
-						shape.splines[s].knots[p].invec = invec;
-						selected = p;
-						recalc = true;
-					}
-					Vector3 outvec = shape.splines[s].knots[p].outvec;	// = Handles.PositionHandle(shape.splines[s].knots[p].outvec, Quaternion.identity);	//shape.hsize);
+//				if ( shape.drawHandles )	//&& recalc == false )
+//				{
+//					Handles.color = shape.VecCol;
+//					pm = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
 
-					//if ( p == selected )
-						//outvec = Handles.PositionHandle(shape.splines[s].knots[p].outvec, Quaternion.identity);	//shape.hsize);
-					//else
-					Vector3 newoutvec = Handles.FreeMoveHandle(shape.splines[s].knots[p].outvec, Quaternion.identity, handlesize * ringratio, Vector3.zero, Handles.CircleCap);	//SphereCap);	//CubeCap);
-					outvec += Vector3.Scale(newoutvec - outvec, dragplane);
+//					Vector3 ip = shape.transform.TransformPoint(shape.splines[s].knots[p].invec);
+//					Vector3 op = shape.transform.TransformPoint(shape.splines[s].knots[p].outvec);
+//					Handles.DrawLine(pm, shape.transform.TransformPoint(shape.splines[s].knots[p].invec));
+//					Handles.DrawLine(pm, shape.transform.TransformPoint(shape.splines[s].knots[p].outvec));
 
-					if ( outvec != shape.splines[s].knots[p].outvec )
-					{
-						if ( shape.lockhandles )
-						{
-							Vector3 d = outvec - shape.splines[s].knots[p].outvec;
-							shape.splines[s].knots[p].invec -= d;
-						}
 
-						shape.splines[s].knots[p].outvec = outvec;
-						selected = p;
-						recalc = true;
-					}
-					Vector3 hp = shape.transform.TransformPoint(shape.splines[s].knots[p].invec);
-					//Handles.CubeCap(0, hp, Quaternion.identity, shape.KnotSize);
-					if ( selected == p )
-						Handles.Label(hp, " " + p);
+//					//Handles.color = Color.black;
+//					//Vector3 normal = (op - Camera.current.transform.position).normalized;
+//					Handles.DrawSolidDisc(op, normal, handlesize * borderratio);	//ksize * 0.55f * ringratio);
+//					//normal = Camera.current.transform.forward;	//(ip - Camera.current.transform.position).normalized;
+//					Handles.DrawSolidDisc(ip, normal, handlesize * borderratio);	//ksize * 0.55f * ringratio);
 
-					hp = shape.transform.TransformPoint(shape.splines[s].knots[p].outvec);
-					//Handles.CubeCap(0, hp, Quaternion.identity, shape.KnotSize);
+//					Handles.color = shape.HandleCol;
+
+//					//Handles.DrawSolidDisc(op, normal, ksize * 0.5f * ringratio);
+//					//Handles.DrawSolidDisc(ip, normal, ksize * 0.5f * ringratio);
+//					Handles.DrawSolidDisc(op, normal, handlesize);
+//					Handles.DrawSolidDisc(ip, normal, handlesize);
+
+//					//shape.splines[s].knots[p].invec = Handles.PositionHandle(shape.splines[s].knots[p].invec, Quaternion.identity);	//shape.hsize);
+//					//shape.splines[s].knots[p].outvec = Handles.PositionHandle(shape.splines[s].knots[p].outvec, Quaternion.identity);	//shape.hsize);
+
+//					Vector3 invec = shape.splines[s].knots[p].invec;
+//					//if ( p == selected )
+//						//invec = Handles.PositionHandle(shape.splines[s].knots[p].invec, Quaternion.identity);	//shape.hsize);
+//					//else
+//					Handles.color = nocol;
+//					Vector3 newinvec = Handles.FreeMoveHandle(shape.splines[s].knots[p].invec, Quaternion.identity, handlesize * ringratio, Vector3.zero, Handles.CircleCap);	//SphereCap);	//CubeCap);
+
+//					invec += Vector3.Scale(newinvec - invec, dragplane);
+//					//Debug.Log("sel " + selected + " new " + invec.ToString("0.0000") + " old " + shape.splines[s].knots[p].invec.ToString("0.0000"));
+//					if ( invec != shape.splines[s].knots[p].invec )
+//					{
+//						if ( shape.lockhandles )
+//						{
+//							Vector3 d = invec - shape.splines[s].knots[p].invec;
+//							shape.splines[s].knots[p].outvec -= d;
+//						}
+
+//						shape.splines[s].knots[p].invec = invec;
+//						selected = p;
+//						recalc = true;
+//					}
+//					Vector3 outvec = shape.splines[s].knots[p].outvec;	// = Handles.PositionHandle(shape.splines[s].knots[p].outvec, Quaternion.identity);	//shape.hsize);
+
+//					//if ( p == selected )
+//						//outvec = Handles.PositionHandle(shape.splines[s].knots[p].outvec, Quaternion.identity);	//shape.hsize);
+//					//else
+//					Vector3 newoutvec = Handles.FreeMoveHandle(shape.splines[s].knots[p].outvec, Quaternion.identity, handlesize * ringratio, Vector3.zero, Handles.CircleCap);	//SphereCap);	//CubeCap);
+//					outvec += Vector3.Scale(newoutvec - outvec, dragplane);
+
+//					if ( outvec != shape.splines[s].knots[p].outvec )
+//					{
+//						if ( shape.lockhandles )
+//						{
+//							Vector3 d = outvec - shape.splines[s].knots[p].outvec;
+//							shape.splines[s].knots[p].invec -= d;
+//						}
+
+//						shape.splines[s].knots[p].outvec = outvec;
+//						selected = p;
+//						recalc = true;
+//					}
+//					Vector3 hp = shape.transform.TransformPoint(shape.splines[s].knots[p].invec);
+//					//Handles.CubeCap(0, hp, Quaternion.identity, shape.KnotSize);
+//					if ( selected == p )
+//						Handles.Label(hp, " " + p);
+
+//					hp = shape.transform.TransformPoint(shape.splines[s].knots[p].outvec);
+//					//Handles.CubeCap(0, hp, Quaternion.identity, shape.KnotSize);
 					
-					if ( selected == p )
-						Handles.Label(hp, " " + p);
-				}
+//					if ( selected == p )
+//						Handles.Label(hp, " " + p);
+//				}
 
-				// Draw nearest point (use for adding knot)
-				//CursorPos = Handles.PositionHandle(CursorPos, Quaternion.identity);
-#if false
-				if ( shape.drawKnots )
-				{
-					pm = shape.splines[s].knots[p].p;
+//				// Draw nearest point (use for adding knot)
+//				//CursorPos = Handles.PositionHandle(CursorPos, Quaternion.identity);
+//#if false
+//				if ( shape.drawKnots )
+//				{
+//					pm = shape.splines[s].knots[p].p;
 
-					if ( p == selected )
-					{
-						Handles.color = Color.white;
-						Handles.Label(pm, " Selected\n" + pm.ToString("0.000"));
-					}
-					else
-					{
-						Handles.color = shape.KnotCol;
-						Handles.Label(pm, " " + p);
-					}
+//					if ( p == selected )
+//					{
+//						Handles.color = Color.white;
+//						Handles.Label(pm, " Selected\n" + pm.ToString("0.000"));
+//					}
+//					else
+//					{
+//						Handles.color = shape.KnotCol;
+//						Handles.Label(pm, " " + p);
+//					}
 
-					//if ( p == selected )
-						shape.splines[s].knots[p].p = Handles.PositionHandle(pm, Quaternion.identity);
-					//else
-					//{
-						//shape.splines[s].knots[p].p = Handles.FreeMoveHandle(pm, Quaternion.identity, shape.KnotSize, Vector3.zero, Handles.CubeCap);
+//					//if ( p == selected )
+//						shape.splines[s].knots[p].p = Handles.PositionHandle(pm, Quaternion.identity);
+//					//else
+//					//{
+//						//shape.splines[s].knots[p].p = Handles.FreeMoveHandle(pm, Quaternion.identity, shape.KnotSize, Vector3.zero, Handles.CubeCap);
 
-						//if ( shape.splines[s].knots[p].p != pm )
-						//selected = p;
-					//}
+//						//if ( shape.splines[s].knots[p].p != pm )
+//						//selected = p;
+//					//}
 
-					delta = shape.splines[s].knots[p].p - pm;
+//					delta = shape.splines[s].knots[p].p - pm;
 
-					shape.splines[s].knots[p].invec += delta;
-					shape.splines[s].knots[p].outvec += delta;
+//					shape.splines[s].knots[p].invec += delta;
+//					shape.splines[s].knots[p].outvec += delta;
 
-					if ( shape.splines[s].knots[p].p != pm )
-					{
-						selected = p;
-						recalc = true;
-					}
+//					if ( shape.splines[s].knots[p].p != pm )
+//					{
+//						selected = p;
+//						recalc = true;
+//					}
 
-					pm = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
+//					pm = shape.transform.TransformPoint(shape.splines[s].knots[p].p);
 
-					Handles.CubeCap(0, pm, Quaternion.identity, shape.KnotSize);
-				}
-#endif
-			}
-		}
+//					Handles.CubeCap(0, pm, Quaternion.identity, shape.KnotSize);
+//				}
+//#endif
+//			}
+//		}
 
 		if ( recalc )
 		{

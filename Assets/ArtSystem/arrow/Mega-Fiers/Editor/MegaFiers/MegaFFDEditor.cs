@@ -42,51 +42,51 @@ public class MegaFFDEditor : MegaModifierEditor
 
 	public override void DrawSceneGUI()
 	{
-		MegaFFD ffd = (MegaFFD)target;
+		//MegaFFD ffd = (MegaFFD)target;
 
-		if ( ffd.DisplayGizmo )
-		{
-			MegaModifiers context = ffd.GetComponent<MegaModifiers>();
+		//if ( ffd.DisplayGizmo )
+		//{
+		//	MegaModifiers context = ffd.GetComponent<MegaModifiers>();
 
-			Vector3 size = ffd.lsize;
-			Vector3 osize = ffd.lsize;
-			osize.x = 1.0f / size.x;
-			osize.y = 1.0f / size.y;
-			osize.z = 1.0f / size.z;
+		//	Vector3 size = ffd.lsize;
+		//	Vector3 osize = ffd.lsize;
+		//	osize.x = 1.0f / size.x;
+		//	osize.y = 1.0f / size.y;
+		//	osize.z = 1.0f / size.z;
 
-			Matrix4x4 tm1 = Matrix4x4.identity;
-			Quaternion rot = Quaternion.Euler(ffd.gizmoRot);
-			tm1.SetTRS(-(ffd.gizmoPos + ffd.Offset), rot, Vector3.one);
+		//	Matrix4x4 tm1 = Matrix4x4.identity;
+		//	Quaternion rot = Quaternion.Euler(ffd.gizmoRot);
+		//	tm1.SetTRS(-(ffd.gizmoPos + ffd.Offset), rot, Vector3.one);
 
-			if ( context != null && context.sourceObj != null )
-				Handles.matrix = context.sourceObj.transform.localToWorldMatrix * tm1;
-			else
-				Handles.matrix = ffd.transform.localToWorldMatrix * tm1;
+		//	if ( context != null && context.sourceObj != null )
+		//		Handles.matrix = context.sourceObj.transform.localToWorldMatrix * tm1;
+		//	else
+		//		Handles.matrix = ffd.transform.localToWorldMatrix * tm1;
 
-			DrawGizmos(ffd, Handles.matrix);
+		//	DrawGizmos(ffd, Handles.matrix);
 
-			Handles.color = Color.yellow;
+		//	Handles.color = Color.yellow;
 
-			int pc = ffd.GridSize();
-			pc = pc * pc * pc;
-			for ( int i = 0; i < pc; i++ )
-			{
-				Vector3 p = ffd.GetPoint(i) + ffd.bcenter;
+		//	int pc = ffd.GridSize();
+		//	pc = pc * pc * pc;
+		//	for ( int i = 0; i < pc; i++ )
+		//	{
+		//		Vector3 p = ffd.GetPoint(i) + ffd.bcenter;
 
-				//pm = Handles.PositionHandle(p, Quaternion.identity);
-				pm = Handles.FreeMoveHandle(p, Quaternion.identity, ffd.KnotSize * 0.1f, Vector3.zero, Handles.CircleCap);
+		//		//pm = Handles.PositionHandle(p, Quaternion.identity);
+		//		//pm = Handles.FreeMoveHandle(p, Quaternion.identity, ffd.KnotSize * 0.1f, Vector3.zero, Handles.CircleCap);
 
-				pm -= ffd.bcenter;
-				p = Vector3.Scale(pm, osize);
-				p.x += 0.5f;
-				p.y += 0.5f;
-				p.z += 0.5f;
+		//		pm -= ffd.bcenter;
+		//		p = Vector3.Scale(pm, osize);
+		//		p.x += 0.5f;
+		//		p.y += 0.5f;
+		//		p.z += 0.5f;
 
-				ffd.pt[i] = p;
-			}
+		//		ffd.pt[i] = p;
+		//	}
 
-			Handles.matrix = Matrix4x4.identity;
-		}
+		//	Handles.matrix = Matrix4x4.identity;
+		//}
 	}
 
 	Vector3[] pp3 = new Vector3[3];

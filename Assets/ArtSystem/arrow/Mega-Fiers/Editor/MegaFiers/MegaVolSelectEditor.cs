@@ -34,48 +34,48 @@ public class MegaVolSelectEditor : MegaModifierEditor
 
 	public override void DrawSceneGUI()
 	{
-		MegaVolSelect mod = (MegaVolSelect)target;
+		//MegaVolSelect mod = (MegaVolSelect)target;
 
-		MegaModifiers mc = mod.gameObject.GetComponent<MegaModifiers>();
+		//MegaModifiers mc = mod.gameObject.GetComponent<MegaModifiers>();
 
-		float[] sel = mod.GetSel();
+		//float[] sel = mod.GetSel();
 
-		if ( mc != null && sel != null )
-		{
-			Color col = Color.black;
+		//if ( mc != null && sel != null )
+		//{
+		//	Color col = Color.black;
 
-			Matrix4x4 tm = mod.gameObject.transform.localToWorldMatrix;
-			Handles.matrix = Matrix4x4.identity;
+		//	Matrix4x4 tm = mod.gameObject.transform.localToWorldMatrix;
+		//	Handles.matrix = Matrix4x4.identity;
 
-			if ( mod.displayWeights )
-			{
-				for ( int i = 0; i < sel.Length; i++ )
-				{
-					float w = sel[i];
-					if ( w > 0.5f )
-						col = Color.Lerp(Color.green, Color.red, (w - 0.5f) * 2.0f);
-					else
-						col = Color.Lerp(Color.blue, Color.green, w * 2.0f);
-					Handles.color = col;
+		//	if ( mod.displayWeights )
+		//	{
+		//		for ( int i = 0; i < sel.Length; i++ )
+		//		{
+		//			float w = sel[i];
+		//			if ( w > 0.5f )
+		//				col = Color.Lerp(Color.green, Color.red, (w - 0.5f) * 2.0f);
+		//			else
+		//				col = Color.Lerp(Color.blue, Color.green, w * 2.0f);
+		//			Handles.color = col;
 
-					Vector3 p = tm.MultiplyPoint(mc.sverts[i]);
+		//			Vector3 p = tm.MultiplyPoint(mc.sverts[i]);
 
-					if ( w > 0.001f )
-						Handles.DotCap(i, p, Quaternion.identity, mod.gizSize);
-				}
-			}
+		//			if ( w > 0.001f )
+		//				Handles.DotCap(i, p, Quaternion.identity, mod.gizSize);
+		//		}
+		//	}
 
-			Handles.color = mod.gizCol;	//new Color(0.5f, 0.5f, 0.5f, 0.2f);
+		//	Handles.color = mod.gizCol;	//new Color(0.5f, 0.5f, 0.5f, 0.2f);
 
-			//Handles.DrawWireDisc(0, tm.MultiplyPoint(mod.origin), Quaternion.identity, mod.radius);
-			//Handles.DrawWireDisc(tm.MultiplyPoint(mod.origin), Vector3.up, mod.radius);
-			//Handles.DrawWireDisc(tm.MultiplyPoint(mod.origin), Vector3.right, mod.radius);
-			//Handles.DrawWireDisc(tm.MultiplyPoint(mod.origin), Vector3.forward, mod.radius);
-			Handles.SphereCap(0, tm.MultiplyPoint(mod.origin), Quaternion.identity, mod.radius * 2.0f);
+		//	//Handles.DrawWireDisc(0, tm.MultiplyPoint(mod.origin), Quaternion.identity, mod.radius);
+		//	//Handles.DrawWireDisc(tm.MultiplyPoint(mod.origin), Vector3.up, mod.radius);
+		//	//Handles.DrawWireDisc(tm.MultiplyPoint(mod.origin), Vector3.right, mod.radius);
+		//	//Handles.DrawWireDisc(tm.MultiplyPoint(mod.origin), Vector3.forward, mod.radius);
+		//	Handles.SphereCap(0, tm.MultiplyPoint(mod.origin), Quaternion.identity, mod.radius * 2.0f);
 
-			Handles.matrix = tm;
-			mod.origin = Handles.PositionHandle(mod.origin, Quaternion.identity);
-			Handles.matrix = Matrix4x4.identity;
-		}
+		//	Handles.matrix = tm;
+		//	mod.origin = Handles.PositionHandle(mod.origin, Quaternion.identity);
+		//	Handles.matrix = Matrix4x4.identity;
+		//}
 	}
 }
